@@ -1,0 +1,28 @@
+.material-icons {
+    font-size: 6rem;
+}
+
+#id.material-icons {
+    font-size: 0%;
+}
+
+.back-button {
+    margin-right: 20px;
+}
+
+.name {
+    padding: 2% 0% 2% 0%;
+}
+
+.profile {
+    padding: 2% 0 2% 0;
+}
+
+.mat-card {
+    border-radius: 20px;
+    width: 90%;
+}
+
+.mat-raised-button {
+    right: 0;
+}

@@ -1,0 +1,75 @@
+<mat-toolbar style="background-color: #E0E0E0;">
+    <mat-icon class="title-icon">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
+            <path d="M1 21h12v2H1zM5.245 8.07l2.83-2.827 14.14 14.142-2.828 2.828zM12.317 1l5.657 5.656-2.83 2.83-5.654-5.66zM3.825 9.485l5.657 5.657-2.828 2.828-5.657-5.657z"/>
+        </svg>
+    </mat-icon>
+    <span class="title" fxHide.xs>View all bids in auction</span>
+    <span class="title" fxHide.gt-xs>View bids</span>
+</mat-toolbar>
+
+<div class="bid-list"
+fxLayout="column nowrap"
+fxLayoutAlign="flex-start center"
+>
+    <div class="auction-details-container"
+    fxLayout="row wrap"
+    fxLayout.xs="column nowrap"
+    fxLayoutAlign="space-around center"
+    style="margin: 2em 0;"
+    >
+        <app-auction-card
+        [auction]="auction"
+        *ngIf="auction"
+        [buttonShow]=false
+        fxFlex="1 1 40%"
+        fxFlex.xs="1 1 auto"
+        [ngStyle.xs]="{'width': '80%', 'margin': '1em 0'}"
+        ></app-auction-card>
+        <div
+        class="chart-container mat-elevation-z6"
+        fxFlex="1 1 40%"
+        fxFlex.xs="0 0 auto"
+        fxLayout="column nowrap"
+        fxLayoutAlign="space-around center"
+        [ngStyle.xs]="{'height': '22em', 'width': '80%', 'margin': '1em 0'}"
+        >
+        <span>
+            Score of bids over time
+        </span>
+        <div class="fixed-chart-container"
+        style="height: 19em; width: 100%;"
+        >
+                <ngx-charts-bar-vertical
+                [yAxis]="true"
+                [legend]="false"
+                [showXAxisLabel]="true"
+                [showYAxisLabel]="true"
+                [xAxisLabel]="'Time'"
+                [yAxisLabel]="'Score'"
+                [results]="timeData"
+                [tooltipDisabled]="true"
+                *ngIf="timeData"
+                >
+                </ngx-charts-bar-vertical>
+            </div>
+        </div>
+    </div>
+    <div class="bids-cont" fxLayout="column nowrap" fxLayoutAlign="flex-start center" fxLayoutGap="1em">
+        <div class="bid-list-header mat-title"
+        style="padding: 1em 0;"
+        >
+            Bids in this auction so far
+        </div>
+        <div class="bid-list-header mat-subheading-1" *ngIf="bids && bids.length === 0">
+            No bids yet
+        </div>
+        <app-bid-card *ngFor="let bidDataEntity of bids" [bidDataEntity]="bidDataEntity" [auction]="auction"></app-bid-card>
+    </div>
+</div>
+
+<button mat-fab matTooltip="Go back" (click)="goBack()"
+    style="position: fixed; bottom: 2em; right: 2em;"
+>
+    <mat-icon>home</mat-icon>
+</button>

@@ -1,0 +1,19 @@
+mat-table {
+    margin: 10px 10px 10px 10px;
+}
+
+ng-container {
+    margin: 10px 10px 10px 10px;
+}
+
+th {
+    margin-right: 10px;
+}
+
+td {
+    margin-right: 10px;
+}
+
+table {
+    width: 100%;
+}

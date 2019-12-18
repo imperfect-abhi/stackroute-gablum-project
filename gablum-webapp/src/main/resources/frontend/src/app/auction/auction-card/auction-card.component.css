@@ -1,0 +1,30 @@
+.head {
+    background-color: rgb(53, 43, 59);
+    color: white;
+}
+
+.proposal-card {
+    height: 20em;
+    border-radius: 0.4em;
+    overflow: hidden;
+    background: white;
+}
+
+.card-header {
+    margin-top: 0.5em;
+    margin-left: 1.5em;
+    font-size: 1.2em;
+}
+
+.info-container {
+    background: rgb(240, 240, 240);
+}
+
+.info-container>div {
+    margin: 1em 0.8em;
+}
+
+.card-actions>div {
+    margin-top: 0.5em;
+    margin-bottom: 0.5em;
+}

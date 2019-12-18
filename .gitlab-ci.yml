@@ -1,0 +1,115 @@
+stages:
+    - build
+    - test
+    - release
+    - production
+
+variables:
+    DEPLOY_BRANCH: $CI_COMMIT_REF_NAME
+
+java-build:
+    image: tastycats/gablumdeps:latest
+    stage: build
+    script:
+        - mvn -B package -PskipAngular -DskipTests
+    tags:
+        - gablum-ci-jobs
+
+
+# java-tests:
+#     image: tastycats/gablumdeps:not-alpine
+#     stage: test
+#     script:
+#         - mvn -B test -PskipAngular
+#     tags:
+#         - gablum-ci-jobs
+
+
+java-lint:
+    image: tastycats/gablumdeps:latest
+    stage: test
+    script:
+        - mvn -B pmd:check -Dpmd.printFailingErrors=true
+    tags:
+        - gablum-ci-jobs
+
+
+java-tests:
+    image: tastycats/gablumdeps:not-alpine
+    stage: test
+    script:
+        - mvn -B jacoco:prepare-agent install jacoco:report -PskipAngular
+    tags:
+        - gablum-ci-jobs
+
+
+angular-build:
+    image: node:12-alpine
+    stage: build
+    script:
+        - cd gablum-webapp/src/main/resources/frontend && npm install && npm run build -- --prod
+    tags:
+        - gablum-ci-jobs
+
+
+angular-lint:
+    image: node:12-alpine
+    stage: test
+    script:
+        - cd gablum-webapp/src/main/resources/frontend && npm install && npm run lint
+    tags:
+        - gablum-ci-jobs
+
+
+angular-tests:
+    image: circleci/node:12-browsers
+    stage: test
+    script:
+        - cd gablum-webapp/src/main/resources/frontend && npm install && npm run test
+    tags:
+        - gablum-ci-jobs
+
+
+# CD stage
+release_deploy:
+    image: ubuntu:latest
+    stage: release
+    tags:
+        - gablum-ci-jobs
+
+    before_script:
+        - mkdir -p ~/.ssh
+        - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_rsa
+        - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    script:
+        - ls -ltr
+        - /bin/sh .gitlab-deploy.sh
+    environment:
+        name: release
+        url: http://gablum-dev.stackroute.io
+    when: on_success
+    only:
+        - release_v050
+
+production_deploy:
+    image: ubuntu:latest
+    stage: production
+    tags:
+        - gablum-ci-jobs
+
+    before_script:
+        #generate ssh key
+        - mkdir -p ~/.ssh
+        - echo -e "$SSH_PRIVATE_KEY" > ~/.ssh/id_rsa
+        - chmod 600 ~/.ssh/id_rsa
+        - 'echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config'
+    script:
+        - ls -ltr
+        - /bin/sh .gitlab-deploy.sh
+    environment:
+        name: production
+        url: http://gablum-dev.stackroute.io
+    when: manual
+    only:
+        - master

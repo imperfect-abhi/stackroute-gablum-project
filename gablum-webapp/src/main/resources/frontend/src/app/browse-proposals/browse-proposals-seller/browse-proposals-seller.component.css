@@ -1,0 +1,16 @@
+.title {
+    margin-left: 2em;
+}
+  
+.title-icon {
+    margin-left: 1em;
+}
+
+app-seller-proposal-card {
+    margin: 2em 1em;
+}
+
+.but1 {
+right: 1em;
+position: fixed;
+}

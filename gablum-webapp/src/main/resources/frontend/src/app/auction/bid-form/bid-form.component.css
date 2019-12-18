@@ -1,0 +1,102 @@
+.title {
+  margin-left: 2em;
+}
+
+.title-icon {
+  margin-left: 1em;
+}
+
+form {
+  width: 100%;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin: 2%;
+  }
+
+.wrapper {
+  padding-left: 5%;
+  padding-right: 5%;
+  margin: 2%;
+
+}
+
+mat-toolbar {
+    display: flex;
+    flex-direction: row;
+
+}
+h1 {
+    align-content: center;
+  }
+
+
+.header {
+    color: black;
+    background-color: transparent;
+    font-size: 120%;
+  }
+.head {
+    align-content: center;
+    margin: 30%;
+  }
+mat-label {
+    color: gray;   
+}
+
+mat-hint {
+    color: red;
+}
+
+::ng-deep .mat-form-field-appearance-outline .mat-form-field-outline {
+    color: purple;
+    opacity: 1;
+    
+}
+
+mat-radio-group{
+    margin: 3%;
+}
+
+.chart-container {
+  border-radius: 0.4em;
+  background-color: white;
+  padding: 1em;
+}
+
+app-auction-card{
+  background-color: transparent;
+}
+
+mat-toolbar{
+  justify-content: center;
+}
+
+.head{
+  font-size: 1.5em;
+}
+
+.error {
+  color: red;
+}
+.error-msg {
+  display: block;
+  position: absolute;
+  font-size: 75%;
+  bottom: -2em;
+}
+
+.form-element {
+  width: 50%;
+}
+
+.positive {
+  color: green;
+}
+
+.medium {
+  color: #979700;
+}
+
+.negative {
+  color: red;
+}

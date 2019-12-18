@@ -1,0 +1,158 @@
+<div class="profile-container" *ngIf="profile" fxLayout="column nowrap" fxLayoutAlign="space-around center">
+    <div style="margin: 2em 0 0 0;" fxLayout="column" fxLayoutAlign="center center">
+        <div class="image1">
+            <i class="material-icons">account_circle</i>
+        </div>
+        <div class="welcome">
+            <h1>{{profile.name | uppercase}}'s Profile</h1>
+        </div>
+    </div>
+    <mat-card style="margin: 1em 12em 4em 12em;">
+        <div class="profile" fxLayout="row" fxLayoutAlign="center center">
+            <div fxFlex="20" fxHide.xs></div>
+            <div fxFlex="60" fxLayout="row">
+                <div>
+                    <h2>Profile</h2>
+                </div>
+            </div>
+            <div fxFlex="20" fxHide.xs></div>
+            <div class="name back-button">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60">
+                    <button mat-raised-button color="primary" fxLayoutAlign="center center" (click)="onClick()">
+                        Back
+                    </button>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+        </div>
+
+        <mat-card-content>
+
+            <div>
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxFlex.xs="95">
+                    <div fxLayout="row" fxLayoutAlign="center center" fxFill>
+                        <div fxFlex="30">PHOTO</div>
+                        <div fxFlex="60">A photo helps to personalize better</div>
+                        <div fxFlex="20" fxLayoutAlign="center center">
+                            <i class="material-icons" style="font-size: 1rem">camera_alt</i>
+                            <i class="material-icons" style="font-size: 3rem">account_circle</i></div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">NAME</div>
+                        <div fxFlex="60">{{profile.name}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">COMPANY NAME</div>
+                        <div fxFlex="60">{{profile.companyName}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">BUSINESS LICENSE</div>
+                        <div fxFlex="60" aria-disabled>{{profile.businessLicense}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">RATING</div>
+                        <div fxFlex="60">{{rating}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">EMAIL</div>
+                        <div fxFlex="60">{{profile.email}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">BUSINESS DOMAIN</div>
+                        <div fxFlex="60">Agricutlture</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">SUB-DOMAIN</div>
+                        <div fxFlex="60">{{profile.businessSubDomain | titlecase}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">ADDRESS</div>
+                        <div fxFlex="60">{{profile.address}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">COUNTRY</div>
+                        <div fxFlex="60">India</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+
+            <div class="name">
+                <div fxFlex="20" fxHide.xs></div>
+                <div fxFlex="60" fxLayout="row" fxFlex.xs="95">
+                    <div fxLayout="row" fxFill>
+                        <div fxFlex="30">ROLE</div>
+                        <div fxFlex="60" aria-disabled>{{roles}}</div>
+                    </div>
+                </div>
+                <div fxFlex="20" fxHide.xs></div>
+            </div>
+        </mat-card-content>
+    </mat-card>

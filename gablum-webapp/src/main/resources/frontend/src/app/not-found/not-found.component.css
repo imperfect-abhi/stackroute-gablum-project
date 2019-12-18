@@ -1,0 +1,13 @@
+.hero-container {
+    width: 100%;
+    height: calc(100vh - 56px);
+}
+
+.hero-text-container {
+    padding: 0 2em;
+}
+
+.hero-text-container > h2 {
+    text-align: center;
+    font-weight: lighter;
+}

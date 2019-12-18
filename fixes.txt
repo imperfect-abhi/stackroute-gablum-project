@@ -1,0 +1,10 @@
+using example in reverse auction desc
+platform instead of application
+clarify "value addition"
+flow => flowchart diagram
+check identifier for a person
+font, color consistency
+@anurag admin view
+ci pipeline, code coverage
+grafana: done
+show tech stack

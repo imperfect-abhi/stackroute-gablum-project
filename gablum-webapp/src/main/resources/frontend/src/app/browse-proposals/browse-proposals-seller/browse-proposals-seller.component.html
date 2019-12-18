@@ -1,0 +1,40 @@
+<mat-toolbar style="background-color: #E0E0E0;">
+    <mat-icon class="title-icon">list</mat-icon>
+    <span class="title" fxHide.xs>Browse all active proposals</span>
+    <span class="title" fxHide.gt-xs>Browse proposals</span>
+    <!-- <span><a [routerLink]="['/dashboard']">
+            <button class="but1" mat-raised-button color="accent">Back to Home</button>
+        </a></span> -->
+</mat-toolbar>
+
+<!-- proposal card of all SubDomains for Seller-->
+<div fxLayout="row wrap" fxLayoutAlign="space-around" fxLayoutGap="15px">
+    <app-seller-proposal-card *ngFor="let proposal of proposals" [allProposal]="proposal" fxFlex="27%" fxFlex.sm="45%"
+        fxFlex.xs="80%">
+    </app-seller-proposal-card>
+
+</div>
+
+<button mat-fab matTooltip="Go back" (click)="goBack()"
+    style="position: fixed; bottom: 2em; right: 2em;" tooltip="Back to Dashboard"
+>
+    <mat-icon>keyboard_backspace</mat-icon>
+</button>
+
+
+<!--expansion panel for seller-->
+<!-- <mat-accordion class="tab-container" fxHide.gt-xs>
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>Active Proposals</mat-panel-title>
+            <mat-panel-description></mat-panel-description>
+        </mat-expansion-panel-header>
+
+        <div class="expansion-proposal-card" fxLayout="column">
+            <app-seller-proposal-card *ngFor="let proposal of proposals" [allProposal]="proposal">
+            </app-seller-proposal-card>
+        </div>
+    </mat-expansion-panel>
+
+
+</mat-accordion> -->

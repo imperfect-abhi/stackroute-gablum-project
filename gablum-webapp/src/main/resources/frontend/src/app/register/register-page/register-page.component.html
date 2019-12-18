@@ -1,0 +1,95 @@
+<mat-toolbar style="background-color: #E0E0E0;">
+    <mat-icon class="title-icon">person_add</mat-icon>
+    <span class="title" fxHide.xs>Register</span>
+</mat-toolbar>
+
+<form [formGroup]="registrationForm" fxLayout="column" fxLayoutAlign="space-around" style="margin-top: 3em;">
+    <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required />
+        <mat-hint align="start">*Not more then 30 characters long.</mat-hint>
+        <mat-error *ngIf="name.touched || name.invalid">{{nameErrorMessage1()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Email</mat-label>
+        <input matInput formControlName="email" required />
+        <mat-error *ngIf="email.touched || email.invalid">{{emailErrorMessage2()}}</mat-error>
+    </mat-form-field>
+    <!--      <mat-card-actions>-->
+    <!--        <div class="email-btn">-->
+    <!--          <button mat-raised-button color="primary" [disabled]='!email.valid' type="submit" (click)="sendMail()">Verify Email</button>-->
+    <!--        </div>-->
+    <!--      </mat-card-actions>-->
+
+    <!--      Will use when we are verifying just after the user enter a valid email exist by sending a mail-->
+
+    <mat-form-field appearance="outline">
+        <mat-label>Address</mat-label>
+        <input matInput formControlName="address" required />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Country </mat-label>
+        <input matInput type="text" disabled value="India">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Phone</mat-label>
+        <input matInput formControlName="phone" placeholder="default country code (+91)" required />
+        <mat-hint align="start">*Do not enter country code.</mat-hint>
+        <mat-error *ngIf="phone.touched || phone.invalid">{{phoneErrorMessage3()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Company Name</mat-label>
+        <input matInput formControlName="companyName" required>
+        <mat-error *ngIf="companyName.touched || companyName.invalid">{{companyErrorMessage4()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Business License No.</mat-label>
+        <input matInput formControlName="businessLicense" required>
+        <mat-hint align="start">*GSTIN Egs: 27AAPFU0939F1ZV, 27AASCS2460H1Z0</mat-hint>
+        <mat-error *ngIf="businessLicense.touched || businessLicense.invalid">{{businessLicenseErrorMessage7()}}
+        </mat-error>
+    </mat-form-field>
+
+
+    <mat-form-field appearance="outline">
+        <mat-label>Your role as a user</mat-label>
+        <mat-select id="subDomain-select" formControlName="role">
+            <mat-option value="" disabled>Choose your interest</mat-option>
+            <mat-option value="buyer">Buyer</mat-option>
+            <mat-option value="seller">Seller</mat-option>
+            <mat-option value="both">Buyer and Seller</mat-option>
+        </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Business Domain:</mat-label>
+        <input matInput type="text" disabled value="Agriculture" formControName="businessDomain">
+        <mat-error *ngIf="businessDomain.touched || businessDomain.invalid">{{getErrorMessage8()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Business Sub-domain:</mat-label>
+        <mat-select id="subDomain-select" formControlName="businessSubDomain">
+            <mat-option value="" disabled>Choose your Sub-domain</mat-option>
+            <mat-option *ngFor="let subs of subDomains" [value]="subs">{{subs| titlecase}}
+            </mat-option>
+        </mat-select>
+        <mat-error *ngIf="businessSubDomain.touched || businessSubDomain.invalid">{{getErrorMessage8()}}</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+        <mat-label>Set Password</mat-label>
+        <input matInput type="password" formControlName="password" required>
+        <mat-hint align="start">*Special characters allowed: &,@,$,_,.,#,!</mat-hint>
+        <mat-error *ngIf="password.touched || password.invalid">{{passwordErrorMessage6()}}</mat-error>
+    </mat-form-field>
+    <div class="btn" fxLayout="row nowrap" fxLayoutAlign="end center">
+        <button mat-raised-button type="cancel" (click)="cancel()">Cancel</button>
+        <button mat-raised-button color="primary" [disabled]='!registrationForm.valid' type="submit" (click)="onSubmit()">Sign Up</button>
+    </div>
+</form>

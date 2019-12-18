@@ -1,0 +1,57 @@
+<mat-toolbar class="mat-elevation-z8" color="primary">
+    <nav class="navbar-base" >
+        <button class="menu-link nav-icon" mat-icon-button (click)="menuClicked($event)" fxHide.gt-xs *ngIf="!isLoggedIn">
+                <mat-icon>menu</mat-icon>
+        </button>
+        <button class="menu-link nav-icon" mat-icon-button (click)="menuClicked($event)" *ngIf="isLoggedIn">
+            <mat-icon>menu</mat-icon>
+        </button>
+
+        <a [routerLink]="['/']" class="home-link nav-icon" fxHide.xs *ngIf="!isLoggedIn">
+        <img src="assets/logo.png" style="height: 50px; background: white;">
+        </a>
+        <a [routerLink]="['/']" class="home-link nav-icon" fxHide.gt-xs *ngIf="!isLoggedIn">
+            <img src="assets/logosmall.png" style="height: 30px; background: white;">
+        </a>
+        <a [routerLink]="['/dashboard']" class="home-link nav-icon" fxHide.xs *ngIf="isLoggedIn">
+            <img src="assets/logo.png" style="height: 50px; background: white;"></a>
+        <a [routerLink]="['/dashboard']" class="home-link nav-icon" fxHide.gt-xs *ngIf="isLoggedIn">
+            <img src="assets/logosmall.png" style="height: 30px; background: white;"></a>
+        <div class="spacer"></div>
+        
+        <div class="nav-links" *ngIf="!isLoggedIn" fxLayout="row" fxHide.xs>
+            <a [routerLink]="['.']" class="nav-link nav-icon" (click)="opDialog()">Login</a>
+            <a [routerLink]="['/']" fragment="about" class="nav-link nav-icon">About Us</a>
+            <a [routerLink]="['/']" fragment="contact" class="nav-link nav-icon">Contact</a>
+        </div>
+        <button class="menu-link nav-icon" nav-link nav-icon mat-button color="primary" [matMenuTriggerFor]="langMenu">
+            <mat-icon>language</mat-icon>
+        </button>
+        <button *ngIf = "isLoggedIn" class="menu-link nav-icon" nav-link nav-ivon mat-button (click)= "alert()">
+            <mat-icon matBadge="{{alertMessage}}" matTooltip="Inbox">notifications</mat-icon>
+        </button>
+        <mat-menu #langMenu="matMenu">
+            <button mat-button class="logout" (click)="changeLang('en')">English</button>    
+            <button mat-button class="logout" (click)="changeLang('hi')">Hindi</button>    
+            <button mat-button class="logout" (click)="changeLang('fr')">French</button>    
+        </mat-menu>
+        <button class="menu-link nav-icon" nav-link nav-icon *ngIf="isLoggedIn" mat-button color="primary" [matMenuTriggerFor]="appMenu">
+            <span *ngIf="profile && profile.name">{{ profile.name.split(' ')[0] | titlecase }} </span>
+            <mat-icon>person</mat-icon>
+            <mat-icon>keyboard_arrow_down</mat-icon>
+        </button>
+        <mat-menu #appMenu="matMenu">
+            <a [routerLink]="['/profile']" routerLinkActive="router-link-active"  class="profile-short-container" fxLayout="column nowrap" fxLayoutAlign="space-around center" matTooltip="view your profile">
+                <div class="profile-short-image" *ngIf="profile && profile.profileImage">
+                    <img [src]="profile.profileImage">
+                </div>
+                <span *ngIf="profile">{{profile.name}}<br>{{roles}}</span>
+            </a>
+            <mat-divider></mat-divider>
+            <button mat-button class="logout" (click)="logout()">
+                Logout
+                <mat-icon [ngStyle]="{'color': 'black'}">exit_to_app</mat-icon>
+            </button>
+        </mat-menu>
+    </nav>
+</mat-toolbar>

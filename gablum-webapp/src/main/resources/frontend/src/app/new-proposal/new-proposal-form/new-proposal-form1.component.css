@@ -1,0 +1,40 @@
+.title {
+  margin-left: 2em;
+}
+
+.title-icon {
+  margin-left: 1em;
+}
+
+.but1 {
+  position: absolute ;
+  right: 0.5em;
+}
+
+.body {
+  background-color:white;
+  align-content: center;
+}
+
+.stepper {
+  /* background-color: ; */
+  width: 80%;
+  margin: 2em auto;
+  /* align-content: center; */
+}
+
+/* .prod-details {
+  width: 50%;
+} */
+
+.grid-container {
+  margin: 2em 0;
+}
+
+.radio-btn {
+  padding: 0 1em;
+}
+
+.padded-btn {
+  margin: 0.5em 1em;
+}

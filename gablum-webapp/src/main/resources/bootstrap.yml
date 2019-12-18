@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: webapp-service
+      uri: ${CONFIG_SERVER}

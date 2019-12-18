@@ -1,0 +1,8 @@
+spring:
+  security:
+    secret: "test-secret"
+
+eureka:
+  instance:
+    metadataMap:
+      instanceId: abc

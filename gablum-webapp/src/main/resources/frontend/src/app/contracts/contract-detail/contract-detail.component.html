@@ -1,0 +1,112 @@
+<h1 mat-dialog-title>
+    <strong>{{'CONTRACTS.TITLE' | translate}}</strong>
+</h1>
+<!-- <label for="">
+    {{'CONTRACTS.SELECT' | translate}} 
+    <select #langselect (change)="translate.use(langselect.value)">
+        <option *ngFor="let lang of translate.getLangs()" [value]="lang">{{ lang }}</option>
+    </select>
+</label> -->
+<div mat-dialog-content style="overflow: scroll; overflow-x: hidden">
+    <h3>
+        {{'CONTRACTS.PN' | translate}} - {{productName | titlecase}}
+    </h3>
+    <h4>
+        {{'CONTRACTS.PD' | translate}} {{contract.auctionDetails.proposal.productDescription}}
+    </h4>
+    <h4>
+        {{'CONTRACTS.QUANT' | translate}} - {{contract.auctionDetails.proposal.quantityValue}}{{contract.auctionDetails.proposal.quantityUnit}}
+    </h4>
+    <mat-grid-list cols="2" rowHeight="2:1">
+        <mat-grid-tile>
+            <section>
+                <h4>
+                    {{'CONTRACTS.AD' | translate}} :
+                </h4>
+                <ul>
+                    <div *ngIf="contract.auctionDetails.proposal.methodOfSupply == true">
+                        <li>
+                            {{'CONTRACTS.MOS' | translate}} - {{'CONTRACTS.FULL' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.methodOfSupply != true">
+                        <li>
+                            {{'CONTRACTS.MOS' | translate}} - {{'CONTRACTS.PARTS' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.qualityCertification == true">
+                        <li>
+                            {{'CONTRACTS.QC' | translate}} - {{'CONTRACTS.REQ' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.qualityCertification != true">
+                        <li>
+                            {{'CONTRACTS.QC' | translate}} - {{'CONTRACTS.OP' | translate}}
+                        </li>
+                    </div>
+                    <li>{{'CONTRACTS.DD' | translate}} : {{contract.auctionDetails.proposal.deliveryDate | date:'mediumDate'}}</li>
+                    <li>{{'CONTRACTS.PRICE' | translate}} : {{contract.auctionDetails.proposal.price}} per {{contract.auctionDetails.proposal.quantityUnit}} </li>
+                    <li>{{'CONTRACTS.CP' | translate}} : {{contract.auctionDetails.proposal.creditPeriod}} days</li>
+                </ul>
+            </section>
+        </mat-grid-tile>
+        <mat-grid-tile>
+            <section>
+                <h4>
+                    {{'CONTRACTS.BD' | translate}} :
+                </h4>
+                <ul>
+                    <div *ngIf="contract.auctionDetails.proposal.methodOfSupply == true">
+                        <li>
+                            {{'CONTRACTS.MOS' | translate}} - {{'CONTRACTS.FULL' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.methodOfSupply != true">
+                        <li>
+                            {{'CONTRACTS.MOS' | translate}} - {{'CONTRACTS.PARTS' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.qualityCertification == true">
+                        <li>
+                            {{'CONTRACTS.QC' | translate}} - {{'CONTRACTS.REQ' | translate}}
+                        </li>
+                    </div>
+                    <div *ngIf="contract.auctionDetails.proposal.qualityCertification != true">
+                        <li>
+                            {{'CONTRACTS.QC' | translate}} - {{'CONTRACTS.OP' | translate}}
+                        </li>
+                    </div>
+                    <li>{{'CONTRACTS.DD' | translate}} : {{contract.bidDetails.bid.timeOfDelivery | date:'mediumDate'}}</li>
+                    <li>{{'CONTRACTS.PRICE' | translate}} : {{contract.bidDetails.bid.price}} per {{contract.auctionDetails.proposal.quantityUnit}} </li>
+                    <li>{{'CONTRACTS.CP' | translate}} : {{contract.bidDetails.bid.creditPeriod}} days</li>
+                </ul>
+            </section>
+        </mat-grid-tile>
+    </mat-grid-list>
+    <article>
+        <p>
+            {{'CONTRACTS.PRE1' | translate}} {{buyer.name | titlecase}} {{'CONTRACTS.PRE2' | translate}} {{ buyer.companyName | titlecase}} {{'CONTRACTS.PRE3' | translate}} {{seller.name | titlecase}} {{'CONTRACTS.PRE2' | translate}} {{ seller.companyName | titlecase}}
+            {{'CONTRACTS.PRE4' | translate}}
+        </p>
+        <p>
+            {{'CONTRACTS.OPEN' | translate}}
+        </p>
+        <ul>
+            <li>{{'CONTRACTS.ONE' | translate}} {{contract.auctionDetails.auctionStartDate | date: 'mediumDate'}} {{'CONTRACTS.AND' | translate}} {{contract.auctionDetails.auctionEndDate | date: 'mediumDate'}} {{'CONTRACTS.FOR' | translate}} {{contract.auctionDetails.proposal.productName}}
+                {{'CONTRACTS.OF' | translate}} ' {{contract.auctionDetails.proposal.productDescription}} ' {{'CONTRACTS.TWO' | translate}}</li>
+            <li>{{'CONTRACTS.THREE' | translate}} {{contract.bidDetails.bid.timeOfDelivery | date: 'mediumDate'}} {{'CONTRACTS.THREE1' | translate}}</li>
+            <li>{{'CONTRACTS.FOUR' | translate}} {{contract.bidDetails.bid.creditPeriod}} {{'CONTRACTS.FOUR1' | translate}} {{contract.bidDetails.bid.price}} {{'CONTRACTS.PER' | translate}} {{contract.auctionDetails.proposal.quantityUnit}}. {{'CONTRACTS.FOUR2'
+                | translate}}.
+            </li>
+        </ul>
+        <p>
+            {{'CONTRACTS.FIVE' | translate}}
+        </p>
+        <p>
+            {{'CONTRACTS.SIX' | translate}},
+        </p>
+        <p>
+            Gablum Private Limited
+        </p>
+    </article>
+</div>

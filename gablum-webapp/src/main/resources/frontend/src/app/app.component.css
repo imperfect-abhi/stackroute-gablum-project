@@ -1,0 +1,23 @@
+.page-content {
+    min-height: 100vh;
+}
+
+ app-navbar {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 2;
+}
+
+mat-sidenav-content {
+    position: relative;
+    z-index: 1;
+}
+
+mat-sidenav {
+    width: 15em;
+}
+
+.sidenav-list-icon {
+    margin-right: 1em;
+}

@@ -1,0 +1,71 @@
+.navbar-base {
+    font-family: 'Montserrat', 'Helvetica', sans-serif;
+    display: flex;
+    flex-flow: row wrap;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+}
+
+.home-link {
+    text-decoration: none;
+    font-size: 2em;
+    height: 100%;
+    font-family: 'Rokkitt', serif;
+}
+
+.spacer {
+    flex-grow: 1;
+}
+
+.nav-icon {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    color: white;
+}
+
+.nav-link {
+    text-decoration: none;
+    transition: 0.5s ease background;
+    height: 100%;
+    padding: 0 1em;
+}
+
+.menu-link {
+    text-decoration: none;
+    padding: 0;
+}
+
+.nav-link:hover {
+    background: #880E4F;    
+}
+
+.logout {
+    width: 100%;
+}
+
+.nav-links {
+    height: 100%;
+}
+
+.logout mat-icon {
+    color: white;
+}
+
+.profile-short-image {
+    width: 3em;
+    height: 3em;
+    border-radius: 1.5em;
+    overflow: hidden;
+}
+
+.profile-short-image > img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+}
+
+.profile-short-container {
+    text-decoration: none;
+}

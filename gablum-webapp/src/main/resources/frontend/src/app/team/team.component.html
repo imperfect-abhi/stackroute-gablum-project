@@ -1,0 +1,37 @@
+<!-- Our team Section -->
+<section id="team" class="team content-section">
+        <div class="container">
+          <div class="row text-center">
+            <div class="col-md-12">
+              <h2>TEAM SLEEPYCATZZZZ</h2>
+              <h3 class="caption gray">MEET THE LAZY DEVELOPERS</h3>
+            </div><!-- /.col-md-12 -->
+      
+            <div class="container">
+              <div class="row">
+      
+              
+                 <div class="col-md-3"  *ngFor="let hero of heros"> 
+                        <div class="team-member">
+                          <figure>
+                            <img src="../../assets/Images/{{hero}}.png" alt="" class="img-responsive">
+                            <figcaption>
+                              <p></p>
+                              <ul>
+                                <li><a href=""><i class="fa fa-facebook fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-twitter fa-2x"></i></a></li>
+                                <li><a href=""><i class="fa fa-linkedin fa-2x"></i></a></li>
+                              </ul>
+                            </figcaption>
+                          </figure>
+                          <h4>{{hero}}</h4>
+                        </div><!-- /.team-member-->
+                      </div>
+      
+      
+              </div><!-- /.row -->
+            </div><!-- /.container -->
+      
+          </div><!-- /.row -->
+        </div><!-- /.container -->
+      </section><!-- /.our-team -->

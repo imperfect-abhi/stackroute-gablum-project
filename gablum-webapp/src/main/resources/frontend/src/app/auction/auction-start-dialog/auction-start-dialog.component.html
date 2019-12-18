@@ -1,0 +1,58 @@
+<div mat-dialog-content style="overflow : hidden;">
+  <div>
+    <div> Auction Details:</div>
+
+    <mat-list role="list">
+
+      <mat-list-item>
+        <div fxFlex=70%>Price</div>
+        <div fxFlex=30%>{{data.price}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div fxFlex=70%>Credit Period</div>
+        <div fxFlex=30%>{{data.creditPeriod + ' days'}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+
+      <mat-list-item>
+        <div fxFlex=70%>Quality Certification</div>
+        <div *ngIf= "data.qualityCertification == true" fxFlex=30%>{{qualityMsgTrue}}</div>
+        <div *ngIf= "data.qualityCertification == false" fxFlex=30%>{{qualityMsgFalse}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+
+      <mat-list-item>
+        <div fxFlex=70%>Method Of Supply</div>
+        <div *ngIf= "data.methodOfSupply == true" fxFlex=30%>{{supplyTrue}}</div>
+        <div *ngIf= "data.methodOfSupply == false" fxFlex=30%>{{supplyFalse}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div fxFlex=70%>Delivery Date</div>
+        <div fxFlex=30%>{{data.deliveryDate | date}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+    </mat-list>
+  </div>
+  <br>
+
+  <div mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end" fxLayoutGap="1em">
+    <mat-dialog-actions fxLayout="row nowrap" fxLayoutAlign="end center">
+      <button mat-raised-button (click)="close()">Back to Dashboard</button>
+      <button color="primary" mat-raised-button (click)="startAuction(data)">Start Auction</button>
+    </mat-dialog-actions>
+  </div>
+
+</div>
+

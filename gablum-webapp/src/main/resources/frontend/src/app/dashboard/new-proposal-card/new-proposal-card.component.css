@@ -1,0 +1,18 @@
+.proposal-card {
+  height: 22em;
+  background: white;
+  border-radius: 0.4em;
+  overflow: hidden;
+}
+
+.header-container {
+  background-color: rgb(230, 230, 230);
+}
+
+.card-header  {
+  margin: 1em 2em;
+}
+
+.info-container > div {
+  margin: 1em 0.8em;
+}

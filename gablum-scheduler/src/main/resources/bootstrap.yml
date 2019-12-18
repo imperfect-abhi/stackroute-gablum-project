@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: SchedulerApiApplication
+  cloud:
+    config:
+      name: scheduler-service
+      uri: ${CONFIG_SERVER}

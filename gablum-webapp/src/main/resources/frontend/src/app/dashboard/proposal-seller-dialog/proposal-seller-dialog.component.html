@@ -1,0 +1,90 @@
+<h1 mat-dialog-title align="center">{{data.productName | uppercase}}</h1>
+<div mat-dialog-content style="overflow : hidden;">
+    <mat-accordion>
+        <mat-expansion-panel [expanded]="true">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Product Details
+                </mat-panel-title>
+                <mat-panel-description>View Product Specifications here</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list role="list">
+                <!-- <mat-list-item role="listitem" >Price: {{data.price}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">Quantity: {{data.quantityValue + ' ' + data.quantityUnit}}</mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">Delivery Date: {{data.deliveryDate| date: 'mediumDate'}}</mat-list-item> -->
+
+                <mat-list-item>
+                    <div fxFill>{{ data.productDescription}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <div fxFlex=70%>Credit Period</div>
+                    <div fxFlex=30%>{{ data.creditPeriod + ' Days'}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <div fxFlex=70%>Quality Certification</div>
+                    <div *ngIf="data.qualityCertification==true" fxFlex=30%>{{'Yes'}}</div>
+                    <div *ngIf="data.qualityCertification==false" fxFlex=30%>{{'No'}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item>
+                    <div fxFlex=70%>Method of Supply</div>
+                    <div *ngIf="data.methodOfSupply==true" fxFlex=30%>{{'Full'}}</div>
+                    <div *ngIf="data.methodOfSupply==false" fxFlex=30%>{{'Parts'}}</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-expansion-panel><br>
+        <mat-expansion-panel *ngIf="isBuyer">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Weights
+                </mat-panel-title>
+                <mat-panel-description>Here are the weights you specified</mat-panel-description>
+            </mat-expansion-panel-header>
+            <div class="graph-container">
+                <ngx-charts-bar-horizontal [view]="view" [xAxis]="true" [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="false" [xAxisLabel]="'Weightage'" [yAxisLabel]="'Parameters'" [results]="weightData">
+                </ngx-charts-bar-horizontal>
+            </div>
+        </mat-expansion-panel><br>
+        <mat-expansion-panel>
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Start and End Dates
+                </mat-panel-title>
+                <mat-panel-description>Details about various Dates</mat-panel-description>
+            </mat-expansion-panel-header>
+            <mat-list role="list">
+                <mat-list-item role="listitem">
+                    <div fxFlex=70%>Registartion starts on </div>
+                    <div fxFlex=30%>{{data.regStartDate | date: 'mediumDate'}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">
+                    <div fxFlex=70%>Registration ends on</div>
+                    <div fxFlex=30%> {{data.regEndDate | date: 'mediumDate'}}
+                    </div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">
+                    <div fxFlex=70%>Auction starts on</div>
+                    <div fxFlex=30%>{{data.auctionStartDate | date: 'mediumDate'}}</div>
+                </mat-list-item>
+                <mat-divider></mat-divider>
+                <mat-list-item role="listitem">
+                    <div fxFlex=70%>Auction ends on</div>
+                    <div fxFlex=30%>{{data.auctionEndDate | date: 'mediumDate'}}</div>
+                </mat-list-item>
+            </mat-list>
+        </mat-expansion-panel><br>
+    </mat-accordion>
+</div>
+<div mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end" fxLayoutGap="1em">
+
+    <button mat-raised-button mat-dialog-close color="secondary">Close</button>
+</div>
+
+
+<!-- <button mat-button [mat-dialog-close] color="secondary">close</button> -->

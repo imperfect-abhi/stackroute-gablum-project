@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: proposals-service
+      uri: ${CONFIG_SERVER}

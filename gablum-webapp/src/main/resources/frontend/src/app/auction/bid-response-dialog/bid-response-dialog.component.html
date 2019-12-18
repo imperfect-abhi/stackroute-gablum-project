@@ -1,0 +1,18 @@
+<div class="wrapper" fxLayoutAlign="space-around center">
+  <mat-dialog-content>
+    <div> Your score is <div [ngClass]="{
+                'positive' : data >= 90,
+                'medium' : data < 90 && data >= 70,
+                'negative': data < 70
+            }">
+        {{data}}
+        </div>
+    </div>
+  </mat-dialog-content>
+</div>
+<br>
+<div class="wrapper" fxLayoutAlign="space-around center">
+  <mat-dialog-actions>
+    <button color="primary" mat-raised-button (click)="close()">Back to Form</button>
+  </mat-dialog-actions>
+</div>

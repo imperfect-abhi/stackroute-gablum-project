@@ -1,0 +1,226 @@
+<div class="hero-container" fxLayout="row nowrap" fxLayoutAlign="space-around center">
+  <div class="hero-text-container">
+    <h2 class="hero-text" [ngStyle]="{'font-size': '2.5em'}" [ngStyle.xs]="{'font-size': '1.5em'}">{{'LANDING.HEROTEXT' | translate}}</h2>
+  </div>
+</div>
+
+<section
+  class="about-section"
+  id="about"
+  [ngStyle.xs]="{ width: '80%' }"
+  fxLayout="column nowrap"
+>
+  <div
+    class="feature"
+    fxLayout="row nowrap"
+    fxLayout.xs="column nowrap"
+    fxLayoutAlign="space-around"
+    fxLayoutAlign.xs="auto">
+      <div class="feature-img" fxFlex="0 0 30%" fxFlex.xs="0 0 auto" style="height: 20em;">
+        <img src="assets/front1.webp" alt="" style="object-fit: cover; width: 100%; height: 100%;">
+      </div>
+      <div 
+      class="feature-text" fxFlex="0 0 60%"
+      fxFlex.xs="0 0 90%"
+      fxFlexAlign="space-around center"
+      style="align-self: center;">
+          <p class="section-content">
+              {{'LANDING.ABOUT1' | translate}}
+          </p>
+      </div>
+    </div>
+  <!-- </div> -->
+  <mat-divider fxFlex="1 0 100%" style="margin: 1em 0;"></mat-divider>
+  <div
+    class="feature"
+    fxLayout="row-reverse nowrap"
+    fxLayout.xs="column nowrap"
+    fxLayoutAlign="space-around"
+    fxLayoutAlign.xs="auto">
+      <div class="feature-img" fxFlex="0 0 30%" fxFlex.xs="0 0 auto" style="height: 20em;">
+        <img src="assets/bid-card.webp" alt="" style="object-fit: cover; width: 100%; height: 100%;">
+      </div>
+      <div 
+      class="feature-text" fxFlex="0 0 60%"
+      fxFlex.xs="0 0 90%"
+      fxFlexAlign="space-around center"
+      style="align-self: center;">
+          <p class="section-content">
+              {{'LANDING.ABOUT2' | translate}}
+          </p>
+      </div>
+    </div>
+  <!-- </div> -->
+</section>
+
+<!-- <section class="subdomains-about" fxLayout="column nowrap">
+    <section class="section-title" fxFlexAlign="center">Our chosen subdomains</section>
+    <section class="subdomains-container" fxLayout="row nowrap" fxLayout.xs="column nowrap">
+        <div class="subdomain-container"></div>
+        <div class="subdomain-container"></div>
+        <div class="subdomain-container"></div>
+    </section>
+</section> -->
+
+<section class="contact-section" id="contact">
+    <h2 class="mat-headline" style="display: flex; justify-content: center;" fxHide.xs><strong>{{'LANDING.CONTACT' | translate}}</strong></h2>
+    <h2 class="mat-headline" style="display: flex; justify-content: center;" fxHide.gt-xs><strong>Contact Us</strong></h2>
+    <form class="contact-form" fxLayout="column nowrap">
+        <mat-form-field appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" type="text">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput placeholder="Email" type="email">
+        </mat-form-field>
+
+        <mat-form-field appearance="outline">
+            <mat-label>Subject</mat-label>
+            <input matInput placeholder="Sucject" type="text">
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline">
+            <mat-label>Query</mat-label>
+            <textarea matInput placeholder="Leave a comment" rows="6"></textarea>
+        </mat-form-field>
+        <button mat-raised-button color='primary' type="submit" fxFlexAlign="flex-end">Submit</button>
+    </form>
+</section>
+
+    <!-- <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Email" type="email" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Subject</mat-label>
+      <input matInput placeholder="Sucject" type="text" />
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Query</mat-label>
+      <textarea matInput placeholder="Leave a comment" rows="6"></textarea>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      type="submit"
+      fxFlexAlign="flex-end"
+    >
+      Submit
+    </button>
+  </form>
+</section> -->
+
+<section class="map-container" id="mapContainer"></section>
+
+<mat-divider></mat-divider>
+
+<!-- <mat-list>
+            <mat-list-item><h3><b>Built with the aim to connect <br>
+                business supply and demand requirements <br>
+                with a refined reverse auction online platform</b></h3></mat-list-item>
+            <mat-divider></mat-divider>                  
+    </mat-list> -->
+
+<div class="completer">
+  <div class="boxes" fxLayout="row wrap" style="padding: 5%;">
+    <div class="box1" fxFlex>
+      <section class="mat-h1">Contact Us
+        <mat-divider></mat-divider>
+      </section>
+      <div>
+        <i class="fa fa-phone" aria-hidden="true"></i>
+        <section class="mat-title">0123-456-789</section>
+      </div>
+
+      <div>
+        <i class="fa fa-envelope" aria-hidden="true"></i>
+        <section class="mat-title">gablumservices@gmail.com</section>
+      </div>
+    </div>
+    <!-- <div style="border-left:3px solid #000;height:300px; margin: 15px auto;"></div> -->
+    <mat-divider vertical></mat-divider>
+    <div class="box1" fxFlex>
+      <section class="mat-h1">Quick Links
+        <mat-divider></mat-divider>
+      </section>
+
+      <div>
+        <section class="mat-title">REVERSE AUCTIONS</section>
+        <!-- <mat-divider></mat-divider> -->
+
+        <section class="mat-title">DEVELOPING TECHNOLOGY</section>
+        <!-- <mat-divider></mat-divider> -->
+
+        <section class="mat-title">DIGITAL CONTRACTS</section>
+        <!-- <mat-divider></mat-divider> -->
+
+        <section class="mat-title">
+          <a href="/team" style="text-decoration: none; color: black;">OUR TEAM MEMBERS</a>
+          </section>
+        <!-- <mat-divider></mat-divider> -->
+      </div>
+    </div>
+
+  </div>
+  <mat-divider></mat-divider>
+  <div class="connect">
+    <h3>FIND US ON</h3>
+    <div
+      class="socialmediaicons"
+      fxLayout="row wrap"
+      fxLayoutAlign="space-around center"
+    >
+      <mat-icon
+        ><a href=""><i class="fa fa-facebook"></i></a
+      ></mat-icon>
+      <mat-icon
+        ><a href=""><i class="fa fa-twitter"></i></a
+      ></mat-icon>
+      <mat-icon
+        ><a href=""><i class="fa fa-linkedin"></i></a
+      ></mat-icon>
+      <mat-icon
+        ><a href=""><i class="fa fa-instagram"></i></a
+      ></mat-icon>
+      <mat-icon
+        ><a href=""><i class="fa fa-github"></i></a
+      ></mat-icon>
+    </div>
+  </div>
+</div>
+<div class="cookie-confirmation-outer" id="cookie-confirmation-outer" *ngIf="showCookieBanner">
+  <div class="cookie-confirmation-inner">
+    <p></p>
+    <p>
+      "This website stores cookies on your computer. These cookies are used to
+      collect information about how you interact with our website and allow us
+      to remember you. We use this information in order to improve and customize
+      your browsing experience and for analytics and metrics about our visitors
+      both on this website and other media. To find out more about the cookies
+      we use, see our Privacy Policy .
+    </p>
+    <p class="cookie-disclaimer">
+      If you decline, your information won’t be tracked when you visit this
+      website. A single cookie will be used in your browser to remember your
+      preference not to be tracked.
+    </p>
+    <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="2em">
+      <button mat-raised-button (click)="hideCookies(false)">Decline</button>
+      <button mat-raised-button color="primary" (click)="hideCookies()">Accept</button>
+    </div>
+  </div>
+</div>
+
+<footer color="primary" fxLayout="column nowrap" fxLayoutAlign="space-around center" [ngStyle]="{'font-size': '0.9em'}">
+  <p fxFlexAlign="center center" [ngStyle]="{'margin': '0.4em'}">
+    Created with <i class="fa fa-heart"></i> by SleepyCats
+  </p>
+
+  <p fxFlexAlign="center center" [ngStyle]="{'margin': '0.4em'}">
+    Copyright &copy; 2019
+  </p>
+</footer>

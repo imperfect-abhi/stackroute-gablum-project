@@ -1,0 +1,8 @@
+<div fxFlex="row wrap" fxLayoutAlign="space-evenly center">
+<button mat-mini-fab color="primary" (click)="showPortal=true" fxFlex>View</button>
+<button mat-mini-fab color="accent" (click)="showPortal=true" fxFlex>Remove</button>
+</div>
+ <app-window *ngIf="showPortal">
+ <h2>Console for Dynamic View</h2>
+  <button (click)="showPortal = false">Close me!</button>
+</app-window>

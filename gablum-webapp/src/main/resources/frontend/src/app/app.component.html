@@ -1,0 +1,21 @@
+<app-navbar (menuToggled)="sideNav.toggle()"></app-navbar>
+<mat-sidenav-container>
+    <mat-sidenav #sideNav (click)="sideNav.toggle()" [mode]="'over'" [fixedInViewport]="true" [position]="'start'" color="primary" [disableClose]="false" [fixedTopGap]="56">
+        <mat-nav-list *ngIf="!isLoggedIn" fxHide.gt-xs>
+            <a mat-list-item [routerLink]="['/']" class="nav-link nav-icon" (click)="openLoginDialog()">Login</a>
+            <a mat-list-item [routerLink]="['/']" fragment="about" class="nav-link nav-icon">About Us</a>
+            <a mat-list-item [routerLink]="['/']" fragment="contact" class="nav-link nav-icon">Contact</a>
+        </mat-nav-list>
+        <mat-nav-list *ngIf="isLoggedIn">
+            <a *ngFor="let navlink of navLinks" mat-list-item [routerLink]="[navlink.href]" class="nav-link nav-icon">
+                <mat-icon class="sidenav-list-icon">{{navlink.icon}}</mat-icon>
+                {{navlink.name}}
+            </a>
+            <!-- <mat-divider *ngFor="let navlink of navLinks"></mat-divider> -->
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content class="page-content">
+        <app-page-title></app-page-title>
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

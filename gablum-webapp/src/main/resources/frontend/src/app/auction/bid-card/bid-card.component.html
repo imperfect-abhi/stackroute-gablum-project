@@ -1,0 +1,24 @@
+<mat-expansion-panel>
+    <mat-expansion-panel-header [collapsedHeight]="'6em'" [expandedHeight]="'9em'" fxLayout="row" class="mat-elevation-z4">
+        <div class="bid-primary-container" fxLayout="column" fxLayoutAlign="space-around">
+            <span (click)="loadProfile(bidDataEntity.createdBy)">{{bidDataEntity.createdBy}}</span>
+            <mat-divider></mat-divider>
+            <mat-chip-list>
+                <mat-chip matTooltip="Price">Price: {{bidDataEntity.bid.price | number:'1.1-2'}}</mat-chip>
+                <mat-chip matTooltip="Score">Score: {{bidDataEntity.scoreObject.total | number:'1.1-2'}}</mat-chip>
+                <mat-chip matTooltip="Rank">#{{bidDataEntity.rank}}</mat-chip>
+            </mat-chip-list>
+        </div>
+    </mat-expansion-panel-header>
+    <div fxLayout="row" fxLayoutAlign="space-between" class="bid-body">
+        <span matTooltip="Delivery Date">Time of Delivery: {{bidDataEntity.bid.timeOfDelivery | date}}</span>
+        <span matTooltip="Credit period (Months)">Credit Period: {{bidDataEntity.bid.creditPeriod}} days</span>
+    </div>
+    <div class="graph-container">
+        <ngx-charts-bar-horizontal [xAxis]="true" [yAxis]="true" [legend]="false" [showXAxisLabel]="true" [showYAxisLabel]="true" [xAxisLabel]="'Score'" [yAxisLabel]="'Item'" [results]="data">
+        </ngx-charts-bar-horizontal>
+    </div>
+    <div style="width: 100%;" fxLayout="row nowrap" style="justify-content: end;">
+        <button mat-raised-button color="primary" (click)="openDialog(bidDataEntity)">Select Bid</button>
+    </div>
+</mat-expansion-panel>

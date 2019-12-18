@@ -1,0 +1,16 @@
+.title {
+    margin-left: 1em;
+}
+  
+.title-icon {
+    margin-left: 1em;
+}  
+
+.dashboard-container {
+    width: 90%;
+    margin: 2em auto;
+}
+
+app-contract-card {
+    margin: 1em;
+}

@@ -1,0 +1,67 @@
+<h1 mat-dialog-title>Edit Profile</h1>
+<div mat-dialog-content>
+    <form class="editForm" fxLayout="column" fxLayoutAlign="center center" [formGroup]="editProfileForm">
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="data.name" readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="data.email" readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Address</mat-label>
+            <input matInput formControlName="address" [value]="data.address" />
+            <mat-hint>*Editable</mat-hint>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Phone</mat-label>
+            <input matInput formControlName="phone" placeholder="+91" required [value]="data.phone" />
+            <mat-hint align="start">*Do not enter country code.</mat-hint>
+            <mat-error *ngIf="phone.touched || phone.invalid">{{phoneErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Company Name</mat-label>
+            <input matInput formControlName="companyName" required placeholder="data.companyName">
+            <mat-error *ngIf="companyName.touched || companyName.invalid">{{commpanyNameErrorMessage()}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="fullWidth" appearance="outline">
+            <mat-label>Business License No.</mat-label>
+            <input matInput formControlName="businessLicense" placeholder="data.businessLicense">
+            <mat-error *ngIf="businessLicense.touched || businessLicense.invalid">{{businessLicenseErrorMessage()}}
+            </mat-error>
+        </mat-form-field>
+
+        <!-- <mat-form-field class="fullWidth" appearance="outline">
+        <mat-label>Role</mat-label>
+        <input matInput formControlName="role" required [value]="roles">
+        <mat-error *ngIf="businessLicense.touched || businessLicense.invalid">{{businessLicenseErrorMessage()}} -->
+        <!-- </mat-error> -->
+        <!-- <mat-hint>*Editable</mat-hint>
+      </mat-form-field> -->
+
+        <mat-form-field appearance="outline" class="fullWidth">
+            <mat-label class="form-label">Business Domain:</mat-label>
+            <input matInput type="text" [value]="data.businessDomain" placeholder="data.businessDomain" formControName="businessDomain" readonly="true" />
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="fullWidth">
+            <mat-label class="form-label">Business Sub-domain:</mat-label>
+            <mat-select id="subDomain-select" formControlName="businessSubDomain">
+                <mat-option value="" disabled>Choose your Sub-domain</mat-option>
+                <mat-option *ngFor="let subs of subDomains" [value]="data.businessSubDomain">{{subs | titlecase}}
+                </mat-option>
+            </mat-select>
+            <mat-hint>*Editable</mat-hint>
+        </mat-form-field>
+    </form>
+</div>
+<div mat-dialog-actions fxLayout="row nowrap" fxLayoutAlign="end center">
+    <button mat-raised-button mat-dialog-close>Cancel</button>
+    <button mat-raised-button color="primary" (click)="onConfirm()">Confirm</button>
+</div>

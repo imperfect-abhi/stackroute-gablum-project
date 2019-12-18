@@ -1,0 +1,67 @@
+<div class="proposal-card mat-elevation-z6" fxLayout="column nowrap" fxLayoutAlign="space-between">
+    <div class="header-container" fxLayout="column nowrap" fxLayoutAlign="flex-start stretch" [style.backgroundColor]="getBackgroundColor()">
+        <div class="mat-title card-header" fxFlexAlign="flex-start">{{proposal.productName | uppercase}}</div>
+        <div class="card-subtitle" fxLayout="row nowrap" fxLayoutAlign="space-around center">
+            <div class="mat-subheading-2 subdomain" style="margin: 0;">{{ proposal.businessSubDomain | titlecase}}</div>
+            <div class="timer">
+                <app-timer style="align-content:flex-end ; color: #e61a1a;" [timerDetails]="proposal"></app-timer>
+            </div>
+        </div>
+    </div>
+    <div class="info-container" fxLayout="row wrap" fxLayoutAlign="center center">
+        <div>
+            <i class="fa fa-money" aria-hidden="true" matTooltip="Price"><span class="mat-subheading-2">
+                    {{ proposal.price }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-balance-scale" aria-hidden="true" matTooltip="Quantity">
+                <span class="mat-subheading-2">{{' ' + proposal.quantityValue + " " + proposal.quantityUnit }}</span>
+            </i>
+        </div>
+        <div>
+            <i class="fa fa-calendar-o" aria-hidden="true" matTooltip="Registeration End-Date" style="transform: scale3d(10);"><span
+                    class="mat-subheading-2">{{"  " + proposal.regEndDate | date: "mediumDate" }}
+                </span></i>
+        </div>
+        <div>
+            <i class="fa fa-calendar" aria-hidden="true" matTooltip="Auction Start-Date">
+                <span class="mat-subheading-2">{{"  " + proposal.auctionStartDate | date: "mediumDate" }}</span>
+            </i>
+        </div>
+        <div>
+            {{'Views: ' + proposal.viewSellerEmails.length}}
+        </div>
+    </div>
+
+    <div style="margin-bottom: 0.5em;">
+        <div fxLayout="row nowrap" fxLayoutAlign="space-around center">
+            <mat-icon matBadge="{{ proposal.interested }}" matBadgePosition="after" (click)="sellersListDialog(proposal)" class="material-icons" matTooltip="Interested Sellers" style="cursor: pointer;">
+                list
+            </mat-icon>
+            <mat-icon matTooltip="See Details" class="material-icons" (click)="openDialog(proposal)" style="cursor: pointer;">visibility</mat-icon>
+            <button mat-button [matMenuTriggerFor]="menu" style="margin: 0; padding: 0; min-width: unset; cursor: pointer;">
+                <mat-icon>
+                    more_vert
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item matTooltip="Schedule auction for proposal" class="material-icons" (click)="startAuction(proposal)">
+        <mat-icon color="primary">
+            play_arrow
+        </mat-icon>
+        Schedule Auction
+    </button>
+    <button mat-menu-item matTooltip="Extend Registration for the proposal" class="material-icons" (click)="extendDialog(proposal)">
+        <mat-icon>
+            hourglass_empty
+        </mat-icon>
+        Extend registration
+    </button>
+    <button mat-menu-item matTooltip="Delete Proposal" class="material-icons" (click)="confirmDialog()">
+        <mat-icon color="warn">delete</mat-icon>
+        Delete
+    </button>
+</mat-menu>

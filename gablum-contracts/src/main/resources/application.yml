@@ -1,0 +1,14 @@
+#server:
+#  port: 8005
+#
+#spring:
+#  rabbitmq:
+#    ports:
+#      -"5671:5672"
+#      -"15671-15672"
+#    addresses: amqp://localhost:5672
+#  cloud:
+#    stream:
+#      bindings:
+#        greetingChannel:
+#          destination: walla

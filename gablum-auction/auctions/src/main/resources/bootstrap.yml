@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: auctions-service
+      uri: ${CONFIG_SERVER}

@@ -1,0 +1,48 @@
+<h1 mat-dialog-title>Confirm Proposal Details</h1>
+<div mat-dialog-content class="mat-dialog" style="overflow: hidden;">
+    <mat-list fxLayout="column" fxLayoutAlign="center center">
+        <mat-list-item>
+            <div fxFlex=70>Business Sub-Domain:</div>
+            <div fxFlex=30>{{ data.form1.value.businessSubDomain | titlecase}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70>Product Name</div>
+            <div fxFlex=30>{{ data.form1.value.productName | uppercase}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Price</div>
+            <div fxFlex=30%><span matPrefix>&#8377;&nbsp;</span>{{ data.form2.value.price}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Quantity</div>
+            <div fxFlex=30%>{{ data.form1.value.quantityValue + ' ' + data.form1.value.quantityUnit}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Delivery Date</div>
+            <div fxFlex=30%>{{ data.form2.value.deliveryDate | date: 'mediumDate'}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Credit Period</div>
+            <div fxFlex=30%>{{ data.form2.value.creditPeriod + 'Days'}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Registration Start Date</div>
+            <div fxFlex=30%>{{ data.form3.value.regStartDate | date: 'mediumDate'}}</div>
+        </mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>
+            <div fxFlex=70%>Auction Start Date</div>
+            <div fxFlex=30%>{{ data.form3.value.auctionStartDate | date: 'mediumDate'}}</div>
+        </mat-list-item>
+    </mat-list>
+</div>
+<mat-dialog-actions fxLayout="row" fxLayoutAlign="end center">
+    <button mat-raised-button mat-dialog-close>Edit</button>
+    <button mat-raised-button color="primary" mat-dialog-close (click)="onConfirm(data)">Confirm</button>
+</mat-dialog-actions>

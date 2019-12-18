@@ -1,0 +1,38 @@
+<!-- fixme:: instead of auction starts in timer should display registeration ends in  -->
+<div class="proposal-card mat-elevation-z6" fxLayout="column nowrap" fxLayoutAlign="space-between">
+    <div class="header-container" fxLayout="column nowrap" fxLayoutAlign="flex-start stretch">
+        <div class="card-header" fxFlexAlign="start" style="margin-left: 2em;">{{allProposal.productName | uppercase}}
+        </div>
+        <div class="card-subtitle" fxLayout="row nowrap" fxLayoutAlign="space-around">
+            <div class="subdomain">{{ allProposal.businessSubDomain | titlecase}}</div>
+            <div class="timer">
+                <app-timer style="align-content:flex-end ; color:#e61a1a" [timerDetails]="allProposal"></app-timer>
+            </div>
+        </div>
+    </div>
+    <div class="info-container" fxLayout="row wrap" fxLayoutAlign="center center">
+        <div>
+            <i class="fa fa-money" aria-hidden="true" matTooltip="Price"><span class="mat-subheading-2">
+                    {{ allProposal.price }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-balance-scale" aria-hidden="true" matTooltip="Quantity">
+                <span
+                    class="mat-subheading-2">{{" " + allProposal.quantityValue + " " + allProposal.quantityUnit }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-calendar-o" aria-hidden="true" matTooltip="Registeration End-Date" style="transform: scale3d(10);"><span class="mat-subheading-2">
+                    {{ allProposal.regEndDate | date: "mediumDate" }}</span></i>
+        </div>
+
+    </div>
+
+    <div style="margin-bottom: 0.5em;">
+        <div fxLayout="row nowrap" fxLayoutAlign="end center" fxLayoutGap="1em">
+            <mat-icon style="cursor: pointer;" matTooltip="See Details" class="material-icons" (click)="openDialog(allProposal)">visibility</mat-icon>
+            <button class="exp-int" mat-raised-button color="primary" [disabled]="(allProposal.interestedUsersEmail.indexOf(userEmail)>-1) || buttonClicked" (click)="shownInterest(allProposal)" matTooltip="Express interest for Auction">
+                Express Interest
+            </button>
+        </div>
+    </div>
+</div>

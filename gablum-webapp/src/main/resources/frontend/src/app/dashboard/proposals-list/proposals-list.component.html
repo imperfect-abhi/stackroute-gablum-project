@@ -1,0 +1,5 @@
+<p>proposals-list</p>
+<ul *ngIf="proposals">
+    <li *ngFor="let proposal of proposals">{{proposal.productName | uppercase}} </li>
+    <li *ngFor="let proposal of proposals">{{proposal.price}}</li>
+</ul>

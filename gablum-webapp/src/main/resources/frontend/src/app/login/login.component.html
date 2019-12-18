@@ -1,0 +1,32 @@
+<div class="login-signup-container" fxLayout="row" fxLayout.xs="column nowrap" fxLayoutGap="4%" fxLayoutAlign="space-around center">
+    <section>
+        <h1 class="mat-headline">Login</h1>
+        <h2 class="mat-subheading-2">Enter Credentials</h2>
+        <form class="logForm" [formGroup]="loginForm">
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label><i class="fa fa-envelope" aria-hidden="true"></i></mat-label>
+                <input matInput formControlName="username" required type="email" />
+                <mat-error *ngIf="userName.touched || userName.invalid">{{getErrorMessage1()}}</mat-error>
+            </mat-form-field>
+            <mat-form-field class="fullWidth" appearance="outline">
+                <mat-label><i class="fa fa-unlock-alt" aria-hidden="true"></i></mat-label>
+                <input matInput formControlName="password" required type="password">
+                <mat-error *ngIf="password.touched || password.invalid">{{getErrorMessage2()}}</mat-error>
+            </mat-form-field>
+            <mat-error *ngIf="loginError">{{loginErrorMesage}}</mat-error>
+            <div fxLayout="row" fxLayoutAlign="end center" fxLayoutGap="1em">
+                <button mat-raised-button (click)='onCancel()'>Cancel</button>
+                <button mat-raised-button color="primary" [disabled]='!loginForm.valid' (click)="onSubmit()">Login</button>
+            </div>
+        </form>
+    </section>
+    <mat-divider fxHide.xs vertical style="align-self: stretch;"></mat-divider>
+    <mat-divider fxHide.gt-xs style="align-self: stretch;"></mat-divider>
+    <section>
+        <h2 class="mat-headline"> NOT A USER YET?</h2>
+        <h2 class="mat-subheading-2">REGISTER WITH US</h2>
+        <button mat-raised-button color="accent" (click)="OnSignUp()" mat-dialog-close>
+      Sign Up
+    </button>
+    </section>
+</div>

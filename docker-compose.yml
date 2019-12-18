@@ -1,0 +1,196 @@
+version: "3"
+
+volumes: 
+  grafana-storage:
+
+services:
+  config-server:
+    build:
+      context: ./config-server
+    expose:
+      - 8000
+    env_file:
+      - env_production.env
+    restart: on-failure
+
+  discovery:
+    build:
+      context: ./discovery-server
+    env_file: env_production.env
+    expose:
+      - 8001
+    ports:
+      - "8001:8001"
+    depends_on:
+      - config-server
+    entrypoint:
+      - ./wait
+      - config-server:8000
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  gateway:
+    build:
+      context: ./gateway
+    env_file: env_production.env
+    expose:
+      - 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  user-service:
+    build:
+      context: ./gablum-user-management
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  webapp:
+    build:
+      context: ./gablum-webapp
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  auctions:
+    build:
+      context: ./gablum-auction/auctions
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  bid:
+    build:
+      context: ./gablum-auction/bid
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  proposals:
+    build:
+      context: ./gablum-proposals
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  scheduler:
+    build:
+      context: ./gablum-scheduler
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+  contracts:
+    build:
+      context: ./gablum-contracts
+    env_file: env_production.env
+    depends_on:
+      - discovery
+    entrypoint:
+      - ./wait
+      - discovery:8001
+      - -t
+      - "300"
+      - --
+      - java
+      - -jar
+      - /usr/app/app.jar
+    restart: on-failure
+
+
+  prometheus:
+    image: prom/prometheus:v2.14.0
+    volumes:
+      - ./prometheus/:/etc/prometheus/
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9090"
+    restart: always
+  
+  grafana:
+    image: grafana/grafana
+    volumes:
+      - grafana-storage:/var/lib/grafana
+    environment: 
+      GF_SERVER_SERVE_FROM_SUB_PATH: 'true'
+      GF_SERVER_ROOT_URL: http://localhost:3000/grafana
+    ports: 
+      - "3000:3000"

@@ -1,0 +1,3 @@
+spring:
+  security:
+    secret: super-secret

@@ -1,0 +1,18 @@
+ .logForm{
+    display: flex;
+    flex-direction: column;
+  }
+
+.btnP
+{
+  align-self: center;
+}
+
+
+
+.login-signup-container {
+
+  align-content: center;
+  
+  
+} 

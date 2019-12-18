@@ -1,0 +1,72 @@
+.title {
+    margin-left: 1em;
+}
+
+.title-icon {
+    margin-left: 1em;
+}
+
+.dashboard-container {
+    width: 90%;
+    margin: 2em auto;
+    overflow-x: hidden;
+    background-image: url("../../../assets/Images/background.jpg");
+}
+
+.proposal-card {
+    margin: 1em;
+    padding: 1em;
+}
+
+.expansion-proposal-card {
+    max-width: 250px;
+    margin: 1em;
+    padding: 1em;
+}
+
+.auction-card {
+    margin: 1em;
+    padding: 1em;
+}
+
+.expansion-auction-card {
+    max-width: 250px;
+    margin: 1em;
+    padding: 1em;
+}
+
+.timer {
+    align-content: center;
+}
+
+.product-specs {
+    padding: 3em;
+}
+
+.fab-container {
+    position: fixed;
+    bottom: 2em;
+    right: 2em;
+    z-index: 10;
+}
+
+.add-proposal-button {
+    margin: 0.5em 0;
+}
+
+app-new-proposal-card {
+    margin: 2em 1em;
+}
+
+app-auction-card {
+    margin: 2em 1em;
+}
+
+app-seller-proposal-card {
+    margin: 2em 1em;
+}
+
+.but1 {
+    position: fixed;
+    right: 1em;
+}

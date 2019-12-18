@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: discovery-service
+      uri: ${CONFIG_SERVER}

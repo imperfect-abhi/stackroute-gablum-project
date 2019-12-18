@@ -1,0 +1,221 @@
+<mat-toolbar style="background-color: #E0E0E0;">
+    <mat-icon class="title-icon">add</mat-icon>
+    <span class="title" fxHide.xs>Float a new proposal</span>
+    <span class="title" fxHide.gt-xs>New proposal</span>
+    <!-- <span>
+        <a  [routerLink]="['/dashboard']">
+            <button class="but1" mat-raised-button color="accent">Back to Home</button>
+        </a>
+    </span> -->
+</mat-toolbar>
+<div class="body">
+    <div class="form-container" fxLayoutAlign="space-between center">
+
+        <mat-vertical-stepper class="stepper" [linear]="false" #stepper>
+            <mat-step [stepControl]="productSpecsForm">
+                <ng-template matStepLabel>Fill product details</ng-template>
+                <form fxLayout="row wrap" fxLayoutAlign="space-between start" [formGroup]="productSpecsForm" (ngSubmit)="onNext1(productSpecsForm)">
+
+                    <div fxFlex="60" fxLayout="row wrap" fxLayoutAlign="space-between start">
+                        <mat-form-field fxFlex="45" appearance="outline">
+                            <mat-label class="form-label">Business Domain:</mat-label>
+                            <input matInput type="text" readonly="true" value="Agriculture" formControName="businessDomain">
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="45" appearance="outline">
+                            <mat-label class="form-label">Business Sub-domain:</mat-label>
+                            <mat-select id="subDomain-select" formControlName="businessSubDomain" required>
+                                <mat-option value="" disabled>Choose Sub-domain</mat-option>
+                                <mat-option *ngFor="let subs of subDomains" [value]="subs">{{subs}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="100" appearance="outline">
+                            <mat-label class="form-label">Product name:</mat-label>
+                            <input matInput type="text" placeholder="Product Name" formControlName="productName" required>
+                            <mat-error *ngIf="productName.touched || productName.invalid">{{productNameError()}}
+                            </mat-error>
+                        </mat-form-field>
+
+                        <mat-form-field fxFlex="45" appearance="outline">
+                            <mat-label class="form-label">Quantity:</mat-label>
+                            <input matInput type="number" placeholder="Quantity Value" formControlName="quantityValue" required>
+                            <mat-error *ngIf="quantityValue.touched || quantityValue.invalid">
+                                {{quantityValueError()}}</mat-error>
+                        </mat-form-field>
+                        <mat-form-field fxFlex="45" appearance="outline">
+                            <mat-select id="unit-select" formControlName="quantityUnit" required>
+                                <mat-option value="" disabled>Type of Quantity</mat-option>
+                                <mat-option *ngFor="let unit of units" [value]="unit">{{unit}}
+                                </mat-option>
+                            </mat-select>
+                        </mat-form-field>
+                    </div>
+                    <mat-form-field fxFlex="35" appearance="outline">
+                        <mat-label class="form-label">Product Description:</mat-label>
+                        <textarea rows="11" columns="50" matInput placeholder="Describe your product" formControlName="productDescription" required></textarea>
+                        <mat-error *ngIf="productDescription.touched || productDescription.invalid">
+                            {{productDescriptionError()}}
+                        </mat-error>
+                    </mat-form-field>
+                    <div fxFlex="100" fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-raised-button routerLink="/dashboard" class="padded-btn">Cancel</button>
+                        <button mat-raised-button color="primary" [disabled]="!productSpecsForm.valid" matStepperNext class="padded-btn">Next</button>
+                    </div>
+
+                </form>
+            </mat-step>
+
+            <mat-step [stepControl]="paramForm">
+
+                <ng-template matStepLabel>Assign Weightages</ng-template>
+                <form [formGroup]="paramForm" fxLayout="row wrap-reverse" fxLayoutAlign="space-around center">
+                    <div fxLayout="column wrap" fxLayoutAlign="space-around start" fxLayoutGap.sm="2em">
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <mat-form-field fxFlex="45" appearance="outline">
+                                <mat-label class="form-label">Price per unit</mat-label>
+                                <input matInput type="number" formControlName="price">
+                                <span matPrefix>&#8377;&nbsp;</span>
+                                <mat-error *ngIf="price.touched || price.invalid">{{priceError()}}</mat-error>
+                            </mat-form-field>
+                            <div fxFlex="45">
+                                <mat-label class="form-label">Weightage:</mat-label>
+                                <mat-slider formControlName="priceWeight" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="5">
+                                </mat-slider>
+                            </div>
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <mat-form-field fxFlex="45" appearance="outline">
+                                <mat-label class="form-label">Delivery date</mat-label>
+                                <input matInput [matDatepickerFilter]="deliveryDate" [matDatepicker]="picker1" placeholder="Choose a delivery date" formControlName="deliveryDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                                <!-- <mat-hint fxHide.xs fxHide.l align="start"> a day dedicated to each registration start, end, and auction start and end </mat-hint> -->
+                                <mat-datepicker #picker1 disabled="false"></mat-datepicker>
+                            </mat-form-field>
+                            <div fxFlex="45">
+                                <mat-label class="form-label">Weightage:</mat-label>
+                                <mat-slider formControlName="deliveryDateWeight" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="5">
+                                </mat-slider>
+                            </div>
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <mat-form-field fxFlex="45" appearance="outline">
+                                <mat-label class="form-label">Credit Period</mat-label>
+                                <input matInput type="number" placeholder="Enter days" formControlName="creditPeriod">
+                                <mat-error *ngIf="creditPeriod.touched || creditPeriod.invalid">{{creditPeriodError()}}
+                                </mat-error>
+                            </mat-form-field>
+                            <div fxFlex="45">
+                                <mat-label class="form-label">Weightage:</mat-label>
+                                <mat-slider formControlName="creditPeriodWeight" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="5">
+                                </mat-slider>
+                            </div>
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div>
+                                <mat-label fxHide.xs class="form-label">Quality Certification</mat-label>
+                                <mat-label fxHide.sm fxHide.l class="form-label">QA/QC </mat-label>
+                                <mat-radio-group formControlName="qualityCertification">
+                                    <mat-radio-button [value]="true" class="radio-btn">Yes</mat-radio-button>
+                                    <mat-radio-button [value]="false" class="radio-btn">No</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div>
+                                <mat-label class="form-label">Weightage: </mat-label>
+                                <mat-slider formControlName="qualityCertificationWeight" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="5">
+                                </mat-slider>
+                            </div>
+                        </div>
+                        <div fxLayout="row wrap" fxLayoutAlign="space-between center" fxLayoutGap="10px">
+                            <div>
+                                <mat-label fxHide.xs class="form-label">Method of Supply</mat-label>
+                                <mat-label fxHide.sm fxHide.l class="form-label">Supply</mat-label>
+                                <mat-radio-group aria-label="Select an option" formControlName="methodOfSupply">
+                                    <mat-radio-button [value]="true" class="radio-btn">Full</mat-radio-button>
+                                    <mat-radio-button [value]="false" class="radio-btn">Parts</mat-radio-button>
+                                </mat-radio-group>
+                            </div>
+                            <div>
+                                <mat-label class="form-label">Weightage: </mat-label>
+                                <mat-slider formControlName="methodOfSupplyWeight" thumbLabel [displayWith]="formatLabel" tickInterval="1" min="1" max="5">
+                                </mat-slider>
+                            </div>
+                        </div>
+                    </div>
+                    <div fxFlex="35" fxFlex.sm="100" fxFlex.xs="100" fxFlex.md="100" fxLayoutAlign="start start">
+                        <mat-accordion fxLayout="column" fxLayoutGap="10px">
+                            <mat-expansion-panel expanded="true">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        What is Weightage that is associated with each parameter?
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>Each of the five parameters would have some importance. You can decide how much each parameter is important to you. To measure this, weightage is scaled on a range 1 to 5 in the ascending order of importance.</p>
+                            </mat-expansion-panel>
+                            <mat-divider></mat-divider>
+                            <mat-expansion-panel (opened)="exPanelOpenState = true" (closed)="exPanelOpenState = false">
+                                <mat-expansion-panel-header>
+                                    <mat-panel-title>
+                                        Significance of Weightage
+                                    </mat-panel-title>
+                                </mat-expansion-panel-header>
+                                <p>To ensure the Best Bid tailored for you. The Quantification helps in scoring the bidder's bid. With every successive bid, the bidder tries to improve his bid score by changing the value of one or more parameter. This way
+                                    the best bid is tailored for you according to the weightages given by you.</p>
+                            </mat-expansion-panel>
+                        </mat-accordion>
+                    </div>
+                </form>
+                <div fxLayout="row" fxLayoutAlign="end center">
+                    <button mat-raised-button matStepperPrevious class="padded-btn">Back</button>
+                    <button mat-raised-button color="primary" matStepperNext [disabled]="!paramForm.valid" class="padded-btn">Next</button>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="timeForm">
+                <form [formGroup]="timeForm">
+                    <ng-template matStepLabel>Schedule Registration/Auction</ng-template>
+                    <div gdColumns="1fr 1fr" gdColumns.xs="1fr" gdGap="2em" class="grid-container">
+                        <mat-form-field appearance="outline">
+                            <mat-label class="form-label">Registration Start date:</mat-label>
+                            <input matInput [matDatepickerFilter]="RegStartDateFilter" [matDatepicker]="picker2" placeholder="Start date" formControlName="regStartDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                            <mat-hint align="start">After today and before Registration End Date </mat-hint>
+                            <mat-datepicker #picker2 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label class="form-label">Registration End date:</mat-label>
+                            <input matInput [matDatepickerFilter]="RegEndDateFilter" [matDatepicker]="picker3" placeholder="End date" formControlName="regEndDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker3"></mat-datepicker-toggle>
+                            <mat-hint align="start"> After Delivery Start Date and before Auction Start Date </mat-hint>
+                            <mat-datepicker #picker3 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label class="form-label">Auction Start date:</mat-label>
+                            <input matInput [matDatepickerFilter]="AuctionStartDateFilter" [matDatepicker]="picker4" placeholder="Start date" formControlName="auctionStartDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker4"></mat-datepicker-toggle>
+                            <mat-hint align="start"> After Registration End Date and before Auction End Date </mat-hint>
+                            <mat-datepicker #picker4 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+
+                        <mat-form-field appearance="outline">
+                            <mat-label class="form-label">Auction End date:</mat-label>
+                            <input matInput [matDatepickerFilter]="AuctionEndDateFilter" [matDatepicker]="picker5" placeholder="End date" formControlName="auctionEndDate">
+                            <mat-datepicker-toggle matSuffix [for]="picker5"></mat-datepicker-toggle>
+                            <mat-hint align="start"> After Auction Start Date and before Delivery Date </mat-hint>
+                            <mat-datepicker #picker5 disabled="false"></mat-datepicker>
+                        </mat-form-field>
+                        <div></div>
+                        <div>
+                            <button mat-raised-button matStepperPrevious class="padded-btn">Back</button>
+                            <button mat-raised-button color="primary" matStepperNext (click)="onSubmit()" [disabled]="!timeForm.valid" class="padded-btn">Submit</button>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-vertical-stepper>
+
+        <button mat-fab matTooltip="Go back" (click)="goBack()" style="position: fixed; bottom: 2em; right: 2em;" tooltip="Back to Dashboard">
+    <mat-icon>keyboard_backspace</mat-icon>
+</button>

@@ -1,0 +1,32 @@
+<div class="timer" fxLayout="row" fxLayoutAlign="space-between center">
+  <div>
+    <i
+      class="material-icons"
+      *ngIf="toStartMsg != null"
+      matTooltip="{{ toStartMsg }}"
+      >timer_off</i
+    >
+    <i class="material-icons" *ngIf="liveMsg != null" matTooltip="{{ liveMsg }}"
+      >timer</i
+    >
+    <i
+      class="material-icons"
+      *ngIf="endedMsg != null"
+      matTooltip="{{ endedMsg }}"
+      >timer_off</i
+    >
+  </div>
+ <div>
+  <p
+    class="mat-body-1" style="font-size: 1.2em;"
+    *ngIf="endedMsg == null"
+    matTooltip="{{days}} Days,{{hours}} hours &{{minutes}} minutes remaining"
+  >
+    <strong mat-fab *ngIf="days != null">{{ days }}.</strong>
+    <strong mat-fab *ngIf="hours != null">{{ hours }}.</strong>
+    <strong mat-fab *ngIf="minutes != null">{{ minutes }}.</strong>
+    <strong>{{ seconds }}</strong>
+  </p>
+  </div>
+</div>
+<!-- fixme:: days when ended should be shown as 00 istead of NAN -->

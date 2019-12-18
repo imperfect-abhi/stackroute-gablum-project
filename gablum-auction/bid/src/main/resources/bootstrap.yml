@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: bid-service
+      uri: ${CONFIG_SERVER}

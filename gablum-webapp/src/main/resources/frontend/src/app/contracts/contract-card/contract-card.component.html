@@ -1,0 +1,137 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<div class="proposal-card mat-elevation-z6" fxLayout="column nowrap" fxLayoutAlign="space-between" (click)="openDialog()" style="cursor: pointer;">
+    <div class="header-container" fxLayout="column nowrap" fxLayoutAlign="flex-start stretch">
+        <div class="mat-title card-header" fxFlexAlign="flex-start">{{contract.auctionDetails.auctionName| uppercase}}
+        </div>
+        <div class="card-subtitle" fxLayout="row nowrap" fxLayoutAlign="space-around">
+            <div class="mat-subheading-2 subdomain" fxLayoutAlign="start center">
+                {{ contract.auctionDetails.proposal.businessSubDomain | titlecase}}</div>
+            <div class="mat-subheading-2 subdomain" fxLayoutAlign="start center">
+                {{ contract.auctionDetails.proposal.quantityValue + " " + contract.auctionDetails.proposal.quantityUnit }}
+            </div>
+        </div>
+    </div>
+
+    <div class="info-container" fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+        <div>
+            <p><strong>Auction Details:</strong></p>
+        </div>
+
+        <div>
+            <i class="fa fa-money" aria-hidden="true" matTooltip="Price">
+                <span class="mat-subheading-2">
+                    {{ contract.auctionDetails.proposal.price }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-calendar-o" aria-hidden="true" matTooltip="Auction Start Date" style="transform: scale3d(10);">
+                <span class="mat-subheading-2">
+                    {{ contract.auctionDetails.auctionStartDate | date: "mediumDate" }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-calendar" aria-hidden="true" matTooltip="Auction End Date">
+                <span class="mat-subheading-2">
+                    {{ contract.auctionDetails.auctionEndDate | date: "mediumDate" }}</span></i>
+        </div>
+        <mat-divider></mat-divider>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="info-container" fxLayout="row wrap" fxLayoutAlign="space-between center">
+
+        <div>
+            <p><strong>Bid Details:</strong></p>
+        </div>
+
+        <div>
+            <i class="fa fa-money" aria-hidden="true" matTooltip="Bid Price">
+                <span class="mat-subheading-2">
+                    {{ contract.bidDetails.bid.price }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-truck" aria-hidden="true" matTooltip="Expected Delivery Date" style="transform: scale3d(10);">
+                <span class="mat-subheading-2">
+                    {{ contract.bidDetails.bid.timeOfDelivery | date: "mediumDate" }}</span></i>
+        </div>
+        <div>
+            <i class="fa fa-cog" aria-hidden="true" matTooltip="Type of Product Supply" *ngIf="contract.auctionDetails.proposal.methodOfSupply == true"><span class="mat-subheading-2">
+                {{supplyTrue}}</span></i
+                >
+            </div>
+            <div>
+               <i
+               class="fa fa-cog"
+               aria-hidden="true"
+               matTooltip="How procurement is to be done"
+               *ngIf= "contract.auctionDetails.proposal.methodOfSupply != true"
+               ><span class="mat-subheading-2">
+               {{supplyFalse}}</span></i
+               >
+           </div>
+
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <div class="info-container" fxLayout="row wrap" fxLayoutAlign="space-around center">
+
+        <div>
+            <p><strong>Buyer : </strong> {{ contract.buyerEmail | titlecase}}</p>
+        </div>
+
+        <div>
+            <p><strong>Supplier : </strong> {{ contract.sellerEmail | titlecase}}</p>
+        </div>
+    </div>
+    <div></div>
+    <div class="card-actions">
+            <div fxLayout="row nowrap" fxLayoutAlign="space-around center" style="margin-bottom: 0.5em;">
+            <i class="fa fa-calendar-o" aria-hidden="true" matTooltip="Created On"
+                style="transform: scale3d(10);"><span class="mat-subheading-2">{{ contract.createdOn | date: "mediumDate" }}</span></i>
+            <!-- <mat-icon matTooltip="See Details" class="material-icons" (click)="openDialog()" style="cursor: pointer;">visibility</mat-icon> -->
+            <mat-icon matTooltip="e-Signed" class="material-icons" style="cursor: pointer;">check_circle_outline
+            </mat-icon>
+        </div>
+    </div>
+
+
+    <!-- <div style="margin-bottom: 0.5em;">
+        <div fxLayout="row nowrap" fxLayoutAlign="space-around center">
+            <mat-icon matBadge="{{ proposal.interested }}" matBadgePosition="after"
+                (click)="sellersListDialog(proposal)" class="material-icons" matTooltip="Interested Sellers"
+                style="cursor: pointer;">
+                list
+            </mat-icon>
+            <mat-icon matTooltip="See Details" class="material-icons" (click)="openDialog(proposal)"
+                style="cursor: pointer;">visibility</mat-icon>
+            <button mat-button [matMenuTriggerFor]="menu"
+                style="margin: 0; padding: 0; min-width: unset; cursor: pointer;">
+                <mat-icon>
+                    more_vert
+                </mat-icon>
+            </button>
+        </div>
+    </div>
+</div>
+<mat-menu #menu="matMenu">
+    <button mat-menu-item matTooltip="Schedule auction for proposal" class="material-icons"
+        (click)="startAuction(proposal)">
+        <mat-icon color="primary">
+            play_arrow
+        </mat-icon>
+        Schedule Auction
+    </button>
+    <button mat-menu-item matTooltip="Extend Registration for the proposal" class="material-icons"
+        (click)="extendDialog(proposal)">
+        <mat-icon>
+            hourglass_empty
+        </mat-icon>
+        Extend registration
+    </button>
+    <button mat-menu-item matTooltip="Delete Proposal" class="material-icons" (click)="confirmDialog()">
+        <mat-icon color="warn">delete</mat-icon>
+        Delete
+    </button>
+</mat-menu> -->

@@ -1,0 +1,58 @@
+<div mat-dialog-content style="overflow-y : hidden !important;">
+  <div>
+    <div> Bid Details:</div>
+
+    <mat-list role="list">
+
+      <mat-list-item>
+        <div fxFlex=70%>Price</div>
+        <div fxFlex=30%>{{data.bid.price}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div fxFlex=70%>Credit Period</div>
+        <div fxFlex=30%>{{data.bid.creditPeriod + ' days'}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+
+      <mat-list-item>
+        <div fxFlex=70% >Quality Certification</div>
+        <div *ngIf= "data.bid.qaqcCertificate == true" fxFlex=30%>{{qualityMsgTrue}}</div>
+        <div *ngIf= "data.bid.qaqcCertificate == false" fxFlex=30%>{{qualityMsgFalse}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+
+      <mat-list-item>
+        <div fxFlex=70%>Method Of Supply</div>
+        <div *ngIf= "data.bid.typeOfSupply == true" fxFlex=30%>{{supplyTrue}}</div>
+        <div *ngIf= "data.bid.typeOfSupply == false" fxFlex=30%>{{supplyFalse}}</div>
+      </mat-list-item>
+
+
+
+      <mat-divider></mat-divider>
+
+      <mat-list-item>
+        <div fxFlex=70%>Delivery Date</div>
+        <div fxFlex=30%>{{data.bid.timeOfDelivery | date}}</div>
+      </mat-list-item>
+
+      <mat-divider></mat-divider>
+
+    </mat-list>
+  </div>
+
+  <div mat-dialog-actions fxLayout="row wrap" fxLayoutAlign="end" fxLayoutGap="1em">
+    <mat-dialog-actions>
+      <button mat-raised-button (click)="close()">Back to Form</button>
+      <button color="primary" mat-raised-button (click)="save()">Submit Bid</button>
+    </mat-dialog-actions>
+  </div>
+</div>
+

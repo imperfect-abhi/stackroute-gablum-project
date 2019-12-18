@@ -1,0 +1,5 @@
+spring:
+  cloud:
+    config:
+      name: gateway-service
+      uri: ${CONFIG_SERVER}
